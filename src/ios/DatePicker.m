@@ -83,7 +83,8 @@
                                                           0,
                                                           frame.size.height );
   CGFloat labelHeight = 30.0;
-  self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, labelHeight)];
+  self.label.frame = CGRectMake(0, 0, frame.size.width, labelHeight);
+  self.label.center = CGPointMake(self.datePickerComponentsContainer.bounds.size.width / 2, self.datePickerComponentsContainer.bounds.size.height / 2);
   self.label.textAlignment = NSTextAlignmentCenter;
   self.label.text = [options objectForKey:@"title"];
 
