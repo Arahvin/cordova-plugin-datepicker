@@ -82,16 +82,11 @@
   self.datePickerComponentsContainer.frame = CGRectOffset(frame,
                                                           0,
                                                           frame.size.height );
-  CGFloat labelHeight = self.datePickerComponentsContainer.frame.size.height;
+  CGFloat labelHeight = 60.0;
   self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, labelHeight)];
   self.label.textAlignment = NSTextAlignmentCenter;
-  self.label.text = [options objectForKey:@"title"];
-
-  NSString *textColorHex = [options objectForKey:@"titleColor"];
-  self.label.textColor = [self colorFromHexString: textColorHex];
+  self.label.text = @"Your Label Text";
   [self.datePickerComponentsContainer addSubview:self.label];
-
-  self.doneButton.frame = CGRectOffset(self.doneButton.frame, 0, labelHeight);
   
   self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
   
@@ -130,8 +125,6 @@
                      } completion:^(BOOL finished) {
                        [self.datePickerContainer removeFromSuperview];
                      }];
-
-    [self.label removeFromSuperview];
 
  // } else {
  //   [self.datePickerPopover dismissPopoverAnimated:YES];
