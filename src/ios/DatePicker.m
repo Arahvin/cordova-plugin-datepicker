@@ -86,7 +86,7 @@
   self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, labelHeight)];
   self.label.textAlignment = NSTextAlignmentCenter;
   self.label.text = [options objectForKey:@"title"];
-  [self.label.centerYAnchor constraintEqualToAnchor:self.datePickerComponentsContainer.centerYAnchor].active = YES;
+
   NSString *textColorHex = [options objectForKey:@"titleColor"];
   self.label.textColor = [self colorFromHexString: textColorHex];
   [self.datePickerComponentsContainer addSubview:self.label];
