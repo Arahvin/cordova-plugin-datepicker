@@ -88,12 +88,12 @@ DatePicker.prototype.show = function(options, cb) {
         doneButtonColor: '#007AFF',
         cancelButtonLabel: 'Cancel',
         cancelButtonColor: '#007AFF',
-        locale: "NL",
         x: '0',
         y: '0',
         minuteInterval: 1,
         popoverArrowDirection: this._popoverArrowDirectionIntegerFromString("any"),
-        locale: "en_US"
+        locale: "en_US",
+        title: ''
     };
 
     for (var key in defaults) {

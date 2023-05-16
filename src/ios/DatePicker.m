@@ -23,6 +23,7 @@
 @property (nonatomic) IBOutlet UIView* datePickerComponentsContainer;
 @property (nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic) IBOutlet UIButton *doneButton;
+@property (nonatomic) IBOutlet UILabel *label;
 @property (nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
@@ -81,7 +82,13 @@
   self.datePickerComponentsContainer.frame = CGRectOffset(frame,
                                                           0,
                                                           frame.size.height );
-  
+  CGFloat labelHeight = 30.0;
+  self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, labelHeight)];
+  self.label.textAlignment = NSTextAlignmentCenter;
+  self.label.text = [options objectForKey:@"title"];
+  [self.datePickerComponentsContainer addSubview:self.label];
+
+  self.doneButton.frame = CGRectOffset(self.doneButton.frame, 0, labelHeight);
   
   self.datePickerContainer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
   
@@ -120,6 +127,8 @@
                      } completion:^(BOOL finished) {
                        [self.datePickerContainer removeFromSuperview];
                      }];
+
+    [self.label removeFromSuperview];
 
  // } else {
  //   [self.datePickerPopover dismissPopoverAnimated:YES];
@@ -218,6 +227,9 @@
   NSInteger minuteInterval = [minuteIntervalString integerValue];
   NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:[options objectForKey:@"locale"]];
 
+  if (@available (iOS 13.4, *)) {
+    self.datePicker.preferredDatePickerStyle = UIDatePickerStyleWheels;
+  }
   
   if (allowOldDates) {
     self.datePicker.minimumDate = nil;
