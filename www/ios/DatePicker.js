@@ -93,7 +93,8 @@ DatePicker.prototype.show = function(options, cb) {
         minuteInterval: 1,
         popoverArrowDirection: this._popoverArrowDirectionIntegerFromString("any"),
         locale: "en_US",
-        title: ''
+        title: '',
+        titleColor: '#007AFF'
     };
 
     for (var key in defaults) {
